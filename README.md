@@ -1,21 +1,12 @@
-# Sales Dash application
+# M5 forecasting Kaggle competition
 
-This is a small project showing capabilities of Plotly Dash. It consists in a simple example of an e-commerce dashboard to monitor sales with some business KPIs and visualization based on transactional data with a simple ARMA sales 15 days look-ahead forecast. It is based on the public data [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/olistbr/brazilian-ecommerce) available on Kaggle.
-
-The dataset contains around 100k transactional data about orders on a Brazilan e-commerce platform named Olist. Details on the dataset can be found on Kaggle.
-
-## Demo
-
-A live demo of the app can be found [here](https://ecommerce-dash.herokuapp.com/)
-
-
-![alt text](/screenshot/test.gif "Demo")
+This is the source code of my participation of the [M5 forecasting competition](https://www.kaggle.com/c/m5-forecasting-accuracy/overview) on Kaggle.
 
 ## Getting Started
 
 Just clone this repository:
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+git clone https://github.com/clabrugere/M5-forecasting.git
 ```
 
 ### Requirements
