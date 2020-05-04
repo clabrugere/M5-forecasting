@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import lightgbm as lgb
 import optuna
-from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import KFold
 
 
@@ -59,7 +58,7 @@ class LGBModel():
         if predict:
             return np.clip(np.mean(predictions, axis=1), 0, None)
         else:
-            return np.mean(loss)
+            return np.nanmean(loss)
     
     
     def _objective(self, trial):

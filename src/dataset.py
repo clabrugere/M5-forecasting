@@ -3,38 +3,6 @@ import numpy as np
 from statsmodels.tsa.stattools import acf
 
 
-class TargetTransformer():
-    def __init__(self):
-        pass
-    
-    def transform(self, df):
-        
-        # log transform to get a contant variance
-        #df['sold_qty'] = df['sold_qty'].apply(np.log1p)
-        
-        # differentiate to get a constant mean
-        df_grouped = df.groupby('id', as_index=False)
-        
-        self.initial_values = df_grouped['sold_qty'].first()
-        self.initial_values = self.initial_values.rename({'sold_qty': 'sold_qty_initial'}, axis=1)
-        df['sold_qty'] = df_grouped['sold_qty'].transform(lambda x: x.diff())
-        df = df_grouped.apply(lambda x:x.iloc[1:])
-        
-        return df
-    
-    def inverse(self, df):
-        # inverse differentiation
-        df['sold_qty'] = df.groupby('id')['sold_qty'].cumsum()
-        df = pd.merge(df, self.initial_values, on='id', how='left')
-        df['sold_qty'] = df[['sold_qty', 'sold_qty_initial']].sum(axis=1)
-        df = df.drop('sold_qty_initial', axis=1)
-        
-        # inverse log transform
-        #df['sold_qty'] = df['sold_qty'].apply(np.expm1)
-        
-        return df
-
-
 def reduce_mem_usage(df, verbose=True):
     '''Optimize dataframe number types memory usage
     '''
